@@ -1,6 +1,6 @@
 Name:           perl-XML-Dumper
 Version:        0.81
-Release:        6%{dist}
+Release:        8%{?dist}
 Summary:        Perl module for dumping Perl objects from/to XML
 
 Group:          Development/Libraries
@@ -11,7 +11,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
 BuildRequires:  perl-XML-Parser >= 2.30-7
+BuildRequires:  perl(Exporter)
 BuildRequires:  perl(ExtUtils::MakeMaker)
+BuildRequires:  perl(Test)
 BuildRequires:  perl(Test::More)
 Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
@@ -64,6 +66,14 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu May 09 2013 Jitka Plesnikova <jplesnik@redhat.com> - 0.81-8
+- Fix dist usage in Release
+- Related: rhbz#652833
+
+* Tue May 07 2013 Jitka Plesnikova <jplesnik@redhat.com> - 0.81-7
+- Add missing BR.
+- Resolves: rhbz#652833
+
 * Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.81-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
